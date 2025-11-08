@@ -1,0 +1,527 @@
+a {
+  text-decoration: none;
+  color: inherit; /* mantiene el color del texto del contenedor */
+}  
+  
+  /* RESET*/
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: #000;
+    color: #000;
+    font-family: "Inter", monospace;
+  }
+  .begin{
+  background: #F9F91C;
+  font-family: "Inter", monospace; 
+  }
+
+
+  /* ELEMENTOS VISUALES */
+  .home {
+    padding-top: 50px;
+    text-align: center;
+    padding: 10px;
+  }
+
+
+  .trending2 {
+    margin: 0;
+    background: #000;
+    color: #fff;
+  }
+
+  .shop-icon {
+    height: 32px;
+    color: #000;
+    position: fixed;
+    right: 25px;
+    cursor: pointer;
+    overflow: visible;
+    
+  }
+
+  .shop-icon.svg {
+    vertical-align: bottom;
+  
+  }
+
+
+
+  /* TRENDING*/
+  .trending2{
+    padding: 30px;
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+  .trendingtittle2{
+
+    text-align: center;
+    padding-bottom: 30px;
+    color: #F9F91C;
+  }
+  .card{
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .cardimg{
+    width: 100%;
+    aspect-ratio: 327 / 290; 
+    position: relative;
+    overflow: hidden;
+  }
+  .doom-eternal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .cardbutton {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .cardbutton,
+.cardbutton button {
+  cursor: pointer;
+}
+  .btn-cart {
+    width: 100%;
+    padding: 15px 0;
+    background-color: #000;
+    color: #F9F91C;
+    font-size: 16px;
+    font-weight: 450;
+    font-family: "Inter", monospace;
+    text-decoration: none;
+    border-radius: 30px;
+    border: 2px solid #F9F91C;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    text-align: center;
+    display: inline-block;
+  }
+  .btn-discount{
+    width: 100%;
+    padding: 15px 0;
+    background-color: #000;
+    color: #EE1319;
+    font-size: 16px;
+    font-weight: 450;
+    font-family: "Inter", monospace;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .titelcard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Gamename {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+  }
+
+  .price-group {
+    display: flex;
+    align-items: flex-start; 
+  }
+
+  .price {
+    font-size: 16px;
+    color: #ffffff;
+    padding-right: 5px;
+  }
+
+  .oldprice {
+    font-size: 12px;
+    color: #999;
+    text-decoration: line-through;
+  }
+  .Gameinfo{
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  .cardtext{
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  .discount-badge {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    background-color: #00eeff;
+    color: #000;
+    font-size: clamp(14px, 2vw, 25px);  
+    font-weight: bold;
+    font-family: "Inter", monospace;
+    border-radius: 50%;
+    width: clamp(60px, 8vw, 200px);       
+    height: clamp(60px, 8vw, 200px);     
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .new-badge{
+  position: absolute;
+    top: 3%;
+    right: 3%;
+    background-color: #000;
+    color: #00eeff;
+    font-size: clamp(14px, 2vw, 25px);  
+    font-weight: bold;
+    font-family: "Inter", monospace;
+    width: clamp(70px, 8vw, 100px);       
+    height: clamp(40px, 8vw, 70px);     
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  .off-badge
+  {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    background-color: #000;
+    color: #EE1319;
+    font-size: clamp(14px, 2vw, 50px);  
+    font-weight: bold;
+    font-family: "Inter", monospace;
+    width: clamp(90px, 12vw, 500px);       
+    height: clamp(30px, 8vw, 70px);     
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+
+  .discount{
+    padding-bottom: 60px;
+  }
+
+
+
+
+.custom-select {
+  flex: 1 1 auto;           /* crece y se encoge según espacio */
+  min-width: max-content;   /* nunca más pequeño que el contenido */
+  max-width: 50%;           /* nunca más grande que 50% del contenedor */
+  border-radius: 30px;
+  position: relative;
+  font-size: 1rem;
+}
+  .selected {
+    background-color: #111;
+    color: #f9f91c;
+    border: 2px solid #f9f91c;
+    border-radius: 30px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .arrow {
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+
+  .options {
+        border: 2px solid #f9f91c;
+        border-radius: 20px;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+    z-index: 10;
+  }
+
+  .options li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #f9f91c;
+  }
+
+  .options li:hover {
+    
+    background-color: #0fe0e0;
+    border-radius: 30px;
+    color:#000;
+  }
+
+  .options li.active {
+    
+    color: #0fe0e0;
+    font-weight: bold;
+    border-radius: 30px;
+  }
+  .search-bar {
+    width: 100%;
+    margin: 2rem 0;
+  }.search-input:focus {
+  border-color: #00eeff; /* borde celeste */
+  color: #00eeff;        /* texto celeste */
+  outline: none;          /* quitar borde por defecto del navegador */
+}
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  
+
+  .search-input {
+    flex: 1;
+    width: 100%;
+    padding: 15px 14px;
+    border: 2px solid #f9f91c;
+    border-radius: 30px;
+    font-size: 1rem;
+    background-color: #111;
+    color: #f9f91c;
+  }
+
+  .search-input::placeholder {
+    color: #cccccc;
+  }
+  
+.filters {
+  display: flex;
+  flex-wrap: wrap;       /* permite que bajen si no caben */
+  gap: 1rem;             /* espacio entre filtros */
+  width: 100%;
+  justify-content: flex-end;
+}
+.filter-select,
+.sort-select {
+  flex: 1 1 50%;   /* crecer, encoger, base 50% */
+  min-width: 150px; /* evita que se encojan demasiado */
+  max-width: 50%;   /* nunca más del 50% del contenedor */
+  padding: 15px;
+  border: 2px solid #f9f91c;
+  border-radius: 30px;
+  background-color: #111;
+  color: #f9f91c;
+  font-size: 1rem;
+  cursor: pointer;
+  appearance: none;
+}
+
+  /* ===== OPCIÓN SELECCIONADA ===== */
+
+  .filter-select option:hover,
+  .sort-select option:hover {
+    color: #f9f91c ;
+    background-color: #111;
+      border: 2px solid #f9f91c;
+  }
+
+  .filter-select:focus,
+  .sort-select:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* ===== MEJORAR BORDE DEL MENÚ (solo visible en algunos navegadores) ===== */
+  select::-webkit-scrollbar {
+    width: 8px;
+  }
+  select::-webkit-scrollbar-thumb {
+    background-color: #f9f91c;
+    border-radius: 8px;
+  }
+
+  /* AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP,AQUI EMPIEZA LA SECCION DESKTOP*/
+
+  @media (min-width: 751px) {
+  /* RESET*/
+  .search-bar {
+    padding: 30px;
+  }
+
+  .begin{
+    padding-top: 10px;
+      top: 65px;
+      position: relative;
+  }
+
+  /* HEADER Y NAVEGACIÓN */
+  .header {
+    justify-content:left;
+    height: 65px;
+  }
+
+
+  #menuToggle {
+      display: none;
+    }
+
+    /* Muestra nav horizontal */
+    .nav-desktop {
+      display: block;
+    }
+
+    .nav-desktop ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0px, 20px;
+    }
+
+    .nav-desktop li a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: "Inter", monospace;
+      transition: color 0.3s ease;
+    }
+
+    .nav-desktop li a:hover {
+      color: #00eeff;
+    }
+
+    .icon{
+      display: none;
+    }
+
+  .shop-icon {
+      height: 40px;
+  align-items: baseline;
+  }
+
+  /* TRENDING*/
+  .trending2{
+    padding: 30px;
+    padding-top: 120px;
+  }
+
+  .discount-badge {
+    font-size: clamp(14px, 2vw, 15px);  
+    width: clamp(50px, 8vw, 60px);       
+    height: clamp(50px, 8vw, 60px);     
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  .new-badge{
+    font-size: clamp(14px, 2vw, 20px);  
+    width: clamp(50px, 8vw, 90px);       
+    height: clamp(20px, 8vw, 50px);     
+  }
+
+  /* ===== MEDIA QUERIES ===== */
+
+  .trending-grid2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    padding: 30px;
+  }
+
+  @media (max-width: 1200px) {
+    .trending-grid2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .trending-grid2 {
+      grid-template-columns: 1fr; 
+    }
+  }
+
+
+  .discount {
+    max-width: 100%; 
+    padding: 0px 60px 80px 60px;
+    
+    display: block;
+    justify-content: center;
+  }
+
+  .discountcard {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4 / 1; 
+    position: relative;
+    overflow: hidden;
+  }
+
+  .discountcard .cardimg {
+    height: 100%;
+  }
+
+  .discountcard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+  .discounttext {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+  }
+
+
+
+  .discountcard {
+    width: 100%;
+    aspect-ratio: 10 / 3;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2px solid #000; 
+  }
+
+  .card{
+    margin-bottom: 0;
+  }
+  .cardimg {
+    flex: 1;
+    position: relative;
+  }
+
+  .cardimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Botón abajo y con mismo ancho */
+  .discountcardbutton { 
+    padding-top: 30px;
+
+  }
+
+
+  }

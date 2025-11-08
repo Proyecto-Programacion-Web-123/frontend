@@ -1,0 +1,522 @@
+/* RESET*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit; /* mantiene el color del texto del contenedor */
+}  
+.nav-desktop{
+   display: NONE;
+}
+
+.btn-log-nav{
+  display: none;
+}
+
+/* HEADER Y NAVEGACIÓN */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #F9F91C;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+}
+
+#menuToggle {
+  display: block;
+  position: fixed;
+  top: 15px;
+  left: 25px;
+  z-index: 1;
+  user-select: none;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+}
+
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  background: #000;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(0px, 1px);
+  background: #00eeff;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: scale(0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(-2px, 1px);
+}
+
+/* MENÚ DESPLEGABLE */
+#menu {
+  position: absolute;
+  top: -15px;
+  left: -25px;
+  width: 100vw;
+  height: 100vh;
+  padding: 125px 50px 50px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: #000;
+  list-style: none;
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menuToggle input:checked ~ ul {
+  transform: none;
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menu li label {
+  cursor: pointer;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: #F9F91C;
+}
+
+/* BOTÓN LOGIN */
+.menulogin {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.logout{
+  background-color: transparent;
+  border-radius: 30px;
+    border: none;
+}
+.login-btn {
+  font-size: 20px;
+  display: inline-block;
+  padding: 12px 50px;
+  background-color: #00eeff;
+  color: #000;
+  font-family: "Inter", monospace;
+  font-weight: 400;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-btn:hover {
+  color: #f91c1c;
+}
+
+/* SECCIÓN PRINCIPAL */
+.hero-section {
+  text-align: center;
+  padding: 40px 20px 40px;
+  
+}
+
+.hero-text {
+  margin-bottom: 35px;
+}
+
+.btn-discover {
+  display: inline-block;
+  padding: 15px 50px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 450;
+  font-family: "Inter", monospace;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+/* MARQUEE */
+.marquee-container {
+  width: 100%;
+  height: 38px;
+  overflow: hidden;
+  background: #F9F91C;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 250s linear infinite;
+}
+
+.marquee-track.reverse {
+  animation: scroll-right 250s linear infinite;
+}
+
+.marquee-text {
+  font-size: 33px;
+  font-family: "Inter", monospace;
+  font-weight: 450;
+  letter-spacing: -2.5px;
+  white-space: nowrap;
+}
+
+/* ANIMACIONES */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* ELEMENTOS VISUALES */
+.home {
+  padding-top: 50px;
+  text-align: center;
+  padding: 10px;
+}
+
+.logo {
+  padding-top: 60px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.shop-icon {
+  font-size: 32px;
+  color: #000;
+  position: fixed;
+  right: 25px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.icon {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  height: inherit;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+
+
+.icon2 {
+  display: none;
+}
+
+/* AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP,AQUI EMPIEZA LA SECCION DESKTOP*/
+
+@media (min-width: 751px) {
+/* RESET*/
+
+
+/* HEADER Y NAVEGACIÓN */
+.header {
+  justify-content:left;
+  height: 65px;
+}
+
+
+ #menuToggle {
+    display: none;
+  }
+.btn-log-nav{
+  font-size: 15px;
+  font-weight: bold;
+  padding:12px 25px;
+  display:flex;
+  position:absolute;
+  right:90px;
+  top:11px;
+  cursor: pointer;  
+  background-color: #000;
+  color: #F9F91C;
+  font-family: "Inter", monospace;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  border:none
+
+}
+  /* Muestra nav horizontal */
+  .nav-desktop {
+    display: block;
+  }
+
+  .nav-desktop ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0px, 20px;
+  }
+
+  .nav-desktop li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Inter", monospace;
+    transition: color 0.3s ease;
+  }
+
+  .nav-desktop li a:hover {
+    color: #00eeff;
+  }
+
+  .icon{
+    display: none;
+  }
+
+
+.shop-icon {
+  font-size: 40px;
+
+}
+
+
+.icon2 {
+display: block;
+  height: inherit;
+  padding: 10px 0;
+  cursor: pointer;
+  padding-right:30px ;
+}
+
+}
+
+
+.footer {
+  background: #000000;
+  width: 100%;
+  padding: 80px 0 40px 0;
+  text-align: center;
+}
+
+
+.footer-logo {
+  width: 140px; 
+  height: auto;
+}
+
+/* FOOTER – LISTA DIVIDIDA */
+.footer-list {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0 32px;
+  font-family: "Zilla Slab", serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  letter-spacing: 3%;
+}
+
+.footer-list li {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #6D6E71;
+  color: #ffffff;
+}
+
+.footer-list li:first-child {
+  border-top: 1px solid #6D6E71;
+}
+
+.footer-list .right {
+  color: #00EDFF;
+}
+/* FOOTER – BLOQUE PROMO + BOTÓN + COPYRIGHT */
+.footer-promo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 32px 0;
+  font-family: "Zilla Slab", serif;
+  font-size: 16px;
+  line-height: 160%;
+  letter-spacing: 3%;
+}
+
+.promo-text {
+  color: #ffffff;
+  max-width: 70%;
+}
+
+.footer-shop-btn {
+  padding: 12px 36px;
+  border: 2px solid #EE1319;
+  color: #EE1319;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: "Zilla Slab", serif;
+  font-size: 16px;
+  transition: background .3s ease, color .3s ease;
+}
+
+.footer-shop-btn:hover {
+  background: #EE1319;
+  color: #000;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: #ffffff;
+  margin: 40px 32px;
+}
+
+.footer-copy {
+  color: #00EDFF;
+  font-family: "Zilla Slab", serif;
+  font-size: 16px;
+  line-height: 160%;
+  letter-spacing: 3%;
+  padding: 0 32px 20px;
+  text-align: left;
+}
+
+
+
+
+@media (min-width: 751px) {
+
+/* FOOTER */
+.footer {
+  padding: 40px 32px;
+  font-family: "Zilla Slab", serif;
+  color: #ffffff;
+}
+
+/* FOOTER – BLOQUE PROMO + BOTÓN + COPYRIGHT */
+.footer-promo {
+  align-items: start;
+ padding: 14px 0 0 0 ;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.footer-list li {
+    border-bottom:none
+}
+.promo-text {
+    font-size: 16px;
+  text-align: left;
+}
+
+
+
+}
+
+
+@media (min-width: 751px) {
+/* RESET*/
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 4fr 6fr 6fr 5fr;
+  align-items: start;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+
+.footer-list li:first-child {
+  border-top: none;
+}
+
+/* Ajustes para que el logo no esté centrado */
+.footer-logo {
+  padding-top: 14px;
+  justify-self: center;
+}
+
+/* Ya lo tienes, pero aseguramos estilo de la lista */
+.footer-list {
+  margin: 0;
+  padding: 0;  
+}
+
+
+.footer-shop-btn {
+  text-align: center;
+  width: fit-content;
+}
+
+.footer-divider {
+  margin: 40px 0 20px;
+}
+
+
+.icon2 {
+display: block;
+  height: inherit;
+  padding: 10px 0;
+  cursor: pointer;
+  padding-right:30px ;
+}
+
+}

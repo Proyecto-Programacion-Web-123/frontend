@@ -1,0 +1,432 @@
+/* RESET*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+  color: #000;
+  font-family: "Inter", monospace;
+}
+.begin{
+ background: #F9F91C;
+ font-family: "Inter", monospace; 
+}
+
+
+.product {
+  margin: 0;
+  background: #000;
+  color: #fff;
+}
+
+/* TRENDING*/
+.product{
+  padding: 30px;
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+.card2{
+  margin-top: 50px;
+   margin-bottom: 50px;
+}
+.cardimg2{
+  width: 100%;
+  aspect-ratio: 327 / 290; 
+  position: relative;
+  overflow: hidden;
+}
+.doom-eternal {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+ .cardbutton2,
+.cardbutton2 button {
+  cursor: pointer;
+}
+
+.cardbutton2 {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.btn-cart {
+  width: 100%;
+  padding: 15px 0;
+  background-color: #000;
+  color: #F9F91C;
+  font-size: 16px;
+  font-weight: 450;
+  font-family: "Inter", monospace;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 2px solid #F9F91C;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  text-align: center;
+  display: inline-block;
+}
+.titelcard2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Gamename2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.price-group2 {
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-start; 
+}
+
+.price2 {
+  font-size: 25px;
+  color: #ffffff;
+  padding-right: 5px;
+}
+
+.oldprice {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+.Gameinfo2{
+  margin-top: 20px;
+  font-size: 15px;
+}
+.Gameinfo2 p {
+  margin: 10px 0; 
+}
+.cardtext2{
+  padding-top: 40px;
+   padding-bottom: 20px;
+}
+
+.game-info-section {
+  background-color: #f9f91c;
+  color: #111;
+  padding: 80px 30px 80px;
+  text-align: center;
+}
+
+.game-info-section h2 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.game-info-section p {
+  text-align: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.mechanics-section {
+  background-color: #000000;
+  padding: 80px 30px 80px;
+  text-align: center;
+}
+
+.mechanics-section h2 {
+          color: #f9f91c;
+  font-size: 2rem;
+  margin-bottom: 80px;
+  font-weight: bold;
+}
+
+.mechanics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3.5rem;
+  justify-items: center;
+}
+
+.mechanic-card {
+  background-color: #000;
+  overflow: hidden;
+  color: #f9f91c;
+  max-width: 400px;
+}
+
+.mechanic-card img {
+    aspect-ratio: 300 / 180;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.mechanic-card p {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 400px) {
+  .mechanics-grid {
+    grid-template-columns: 1fr; /* una sola columna fluida */
+  }
+
+  .mechanic-card img {
+    max-height: 200px;
+  }
+
+  .mechanic-card p {
+    font-size: 13px;
+  }
+}
+
+/* ===== MEJORAR BORDE DEL MENÚ (solo visible en algunos navegadores) ===== */
+select::-webkit-scrollbar {
+  width: 8px;
+}
+select::-webkit-scrollbar-thumb {
+  background-color: #f9f91c;
+  border-radius: 8px;
+}
+
+
+.platform-section {
+  background-color: #f9f91c;
+  color: #111;
+  padding: 80px 30px 80px;
+  text-align: left;
+}
+
+.platform-container {
+
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.platform-section p {
+  margin-bottom: 15px; /* o el valor que prefieras */
+}
+
+.platform-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 60px;
+  font-weight: bold;
+}
+
+.platform-details {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.platform-details li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+
+.platform-section a {
+  color: #00eeff;
+  text-decoration: none;
+}
+
+.platform-section a:hover {
+  text-decoration: none;
+}
+
+@media (min-width: 751px){
+  /* Oculta la imagen dentro de la card */
+
+   .cardimg2 {
+    display: none;
+    
+  }
+.mechanics-section {
+  background-color: #000000;
+  color: #f9f91c;
+  padding: 80px 60px 200px;
+  text-align: center;
+}
+.Gameinfo2{
+  margin-top: 20px;
+  font-size: 20px;
+}
+.Gameinfo2 p {
+  margin: 10px 0; 
+}
+.cardtext2{
+  padding-top: 40px;
+   padding-bottom: 20px;
+}
+  /* Usa la imagen como fondo con opacidad */
+  .product {
+    background-image: var(--bg-image);
+    background-size:cover;
+    background-position:top;
+    position: relative;
+  }
+
+  /* Capa oscura encima para dar contraste */
+.product::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    /* Degradado encima */
+    linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0, 0, 0, 0.671) 100%),
+    /* Color base debajo */
+    rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+  /* Asegura que el contenido quede encima del overlay */
+  .product-grid {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Ajuste visual de la card sobre el fondo */
+  .card2 {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  /* Estilo especial para la sección “Sobre Doom Eternal” */
+  .game-info-section {
+    background-color: #000;
+    padding: 80px 60px;
+  }
+
+  .game-info-section h2 {
+    color: #F9F91C;
+    font-size: 28px;
+    margin-bottom: 60px;
+  }
+
+  .game-info-section p {
+    color: #f9f91c;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+  
+  .platform-section {
+     padding: 80px 60px 120px;}
+}
+
+
+/* AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP, AQUI EMPIEZA LA SECCION DESKTOP,AQUI EMPIEZA LA SECCION DESKTOP*/
+
+@media (min-width: 751px) {
+
+
+/*.product*/
+.product{
+  padding: 30px;
+  padding-top: 120px;
+}
+
+.discount-badge {
+  font-size: clamp(14px, 2vw, 15px);  
+  width: clamp(50px, 8vw, 60px);       
+  height: clamp(50px, 8vw, 60px);     
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.new-badge{
+  font-size: clamp(14px, 2vw, 20px);  
+  width: clamp(50px, 8vw, 90px);       
+  height: clamp(20px, 8vw, 50px);     
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  padding: 30px;
+}
+
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+
+
+.discount {
+  max-width: 100%; 
+  padding: 0px 60px 80px 60px;
+  
+  display: block;
+  justify-content: center;
+}
+
+.discountcard {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 1; 
+  position: relative;
+  overflow: hidden;
+}
+
+.discountcard .cardimg2 {
+  height: 100%;
+}
+
+.discountcard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.discounttext {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+
+
+.discountcard {
+  width: 100%;
+  aspect-ratio: 10 / 3;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid #000; 
+}
+
+.card2{
+   margin-bottom: 0;
+}
+.cardimg2 {
+  flex: 1;
+  position: relative;
+}
+
+/* Botón abajo y con mismo ancho */
+.discountcardbutton { 
+  padding-top: 30px;
+
+}
+
+
+}
