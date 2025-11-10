@@ -20,3 +20,7 @@ export async function logoutAll() {
   await api('/auth/logout-all', { method: 'POST' });
   clearAccessToken();
 }
+
+export async function meOrders() {
+  return api('/auth/me/orders');
+}
