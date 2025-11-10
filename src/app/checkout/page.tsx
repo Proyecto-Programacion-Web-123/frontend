@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import './stylescheckout.css';
 import { getAccessToken } from '../../api/client';
 import { loadUser } from '../../api/session';
@@ -9,7 +9,8 @@ import Header from "../../components/header"
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
-export default function Checkout() {
+
+function CheckoutContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams?.get('id');
@@ -157,5 +158,14 @@ export default function Checkout() {
         <p className="footer-copy">2025 Termn. All rights reserved.</p>
       </footer>
     </>
+  );
+}
+
+
+export default function Checkout() {
+  return (
+    <Suspense fallback={<div>Loading checkout...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
