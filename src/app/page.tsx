@@ -20,12 +20,13 @@ interface Product {
   is_new?: boolean;
 }
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0)
   const [trendingProducts, setTrendingProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
+  const [isClient, setIsClient] = useState(false) // ← Nuevo estado para verificar cliente
 
   // ====== sesión (usuario logueado) ======
   const [user, setUser] = useState<any | null>(null)
@@ -56,6 +57,12 @@ export default function Home() {
   }
 
   useEffect(() => {
+    setIsClient(true) // ← Marcar que estamos en el cliente
+  }, [])
+
+
+  useEffect(() => {
+    if (!isClient) return // ← Solo ejecutar en el cliente
     // cargar usuario guardado
     setUser(loadUser());
 
@@ -66,7 +73,7 @@ export default function Home() {
     fetchTrendingProducts();
 
     return () => window.removeEventListener('storage', onStorage);
-  }, [])
+  }, [isClient])
 
   // cerrar sesión
   async function handleLogout() {
@@ -74,6 +81,19 @@ export default function Home() {
     setAccessToken('')
     clearUser();
     setUser(null);
+  }
+
+    // Evitar renderizado hasta estar en el cliente
+  if (!isClient) {
+    return (
+      <div>
+        <Header />
+        <div style={{backgroundColor: "black", color: "#F9F91C", minHeight: "100vh"}}>
+          <p>Loading...</p>
+        </div>
+        <Footer />
+      </div>
+    )
   }
 
   return (
