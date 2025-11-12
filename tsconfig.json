@@ -19,7 +19,7 @@
       "@/*": ["./src/*"]
     },
 
-    "types": ["vitest/globals", "node"],
+    "types": ["vitest", "node"],
 
     "plugins": [
       { "name": "next" }
@@ -31,7 +31,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "test/**/*.ts",
-    "test/**/*.tsx"
-, "vitest.config.mjs"  ],
+    "test/**/*.tsx",
+    "vitest.config.mjs"
+  ],
   "exclude": ["node_modules"]
 }
