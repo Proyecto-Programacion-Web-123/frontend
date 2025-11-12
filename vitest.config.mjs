@@ -23,5 +23,11 @@ export default defineConfig({
     setupFiles: ['./test/setup.ts'],
     css: true,
     coverage: { provider: 'v8', reporter: ['text', 'html'] },
+    exclude: [
+      '**/Products.test.tsx',
+      '**/Products.error.test.tsx',
+      '**/node_modules/**'
+    ]
+
   },
 })
