@@ -1,6 +1,6 @@
 // frontend_next/src/api/client.js
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 if (!process.env.NEXT_PUBLIC_API_URL) {
   console.warn(

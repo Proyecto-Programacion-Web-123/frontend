@@ -1,23 +1,28 @@
 "use client"
-
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 import './stylescheckout.css';
-import { getAccessToken } from '../../api/client';
+import { getAccessToken, api } from '../../api/client';
 import { loadUser } from '../../api/session';
 import Header from "../../components/header"
-
-const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
-
 
 function CheckoutContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams?.get('id');
-
+  const quantityParam = searchParams?.get('quantity');
+  
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [showThanks, setShowThanks] = useState(false);
+  const [quantity, setQuantity] = useState(1); // ← State para cantidad
+
+  // ✅ Inicializar cantidad desde parámetro URL
+  useEffect(() => {
+    if (quantityParam) {
+      setQuantity(Number(quantityParam));
+    }
+  }, [quantityParam]);
 
   useEffect(() => {
     const user = loadUser();
@@ -31,9 +36,11 @@ function CheckoutContent() {
 
     async function fetchProduct() {
       try {
-        const res = await fetch(`${API}/products/${id}`);
-        const data = await res.json();
+        const data = await api(`/products/${id}`);
         setProduct(data);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        alert('Error loading product');
       } finally {
         setLoading(false);
       }
@@ -46,42 +53,45 @@ function CheckoutContent() {
     try {
       const user = loadUser();
       const token = getAccessToken();
+      
       if (!user || !token) {
         alert("Authentication error");
+        router.push("/login");
         return;
       }
 
-      const orderRes = await fetch(`${API}/orders`, {
+      // ✅ Calcular total basado en cantidad
+      const unitPrice = parseFloat(product.price);
+      const total = unitPrice * quantity;
+
+      const orderData = {
+        id_user: user.id_user,
+        date: new Date().toISOString().split("T")[0],
+        total: total,
+        items: [
+          {
+            id_product: product.id_product,
+            name: product.name,
+            image_url: product.image_url,
+            unit_price: unitPrice,
+            quantity: quantity, // ← Usar la cantidad seleccionada
+            subtotal: total,
+          }
+        ],
+      };
+
+      console.log('📦 Order data:', orderData);
+
+      const orderResult = await api('/orders', {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          id_user: user.id_user,
-          date: new Date().toISOString().split("T")[0],
-          total: product.price,
-          items: [
-            {
-              id_product: product.id_product,
-              name: product.name,
-              image_url: product.image_url,
-              unit_price: product.price,
-              quantity: 1,
-              subtotal: product.price,
-            }
-          ],
-        }),
+        body: orderData,
       });
 
-      if (!orderRes.ok) {
-        alert("Error creating order");
-        return;
-      }
-
+      console.log('✅ Order created:', orderResult);
       setShowThanks(true);
-    } catch {
-      alert("Unexpected error");
+    } catch (error) {
+      console.error('💥 Error creating order:', error);
+      alert("Error creating order: " + error);
     }
   };
 
@@ -89,6 +99,9 @@ function CheckoutContent() {
     e.preventDefault();
     handleConfirm();
   };
+
+  // ✅ Calcular precio total dinámicamente
+  const totalPrice = product ? (parseFloat(product.price) * quantity).toFixed(2) : '0.00';
 
   if (loading) return <p>Loading...</p>;
   if (!product) return <p>Product not found</p>;
@@ -111,7 +124,34 @@ function CheckoutContent() {
               />
               <h2 className="checkout-game">{product.name}</h2>
               <p><strong>{product.description}</strong></p>
-              <p><strong>Price:</strong> Q{product.price}</p>
+              
+              {/* ✅ Mostrar información de cantidad y precio */}
+              <div className="quantity-section">
+                <p><strong>Unit Price:</strong> Q{product.price}</p>
+                
+                <div className="quantity-selector" style={{ margin: '10px 0' }}>
+                  <label htmlFor="checkout-quantity"><strong>Quantity:</strong></label>
+                  <select 
+                    id="checkout-quantity"
+                    value={quantity}
+                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    style={{
+                      marginLeft: '10px',
+                      backgroundColor: 'black',
+                      color: '#F9F91C',
+                      border: '1px solid #F9F91C',
+                      padding: '5px',
+                      borderRadius: '4px'
+                    }}
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                      <option key={num} value={num}>{num}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <p className="total-price"><strong>Total: Q{totalPrice}</strong></p>
+              </div>
             </div>
 
             <form className="checkout-form" onSubmit={handleSubmit}>
@@ -136,7 +176,7 @@ function CheckoutContent() {
               <input type="text" required />
 
               <button type="submit" className="checkout-btn">
-                Confirm Purchase
+                Confirm Purchase (Q{totalPrice})
               </button>
             </form>
           </div>
@@ -144,8 +184,9 @@ function CheckoutContent() {
           {showThanks && (
             <div className="thanks-popup">
               <div className="thanks-content">
-                <h2>Thank you for your purchase</h2>
-                <p>The game key has been sent to your email.</p>
+                <h2>Thank you for your purchase!</h2>
+                <p>You bought {quantity} copy(s) of {product.name}</p>
+                <p>The game key(s) has been sent to your email.</p>
                 <button onClick={() => router.push("/")}>Close</button>
               </div>
             </div>
@@ -160,7 +201,6 @@ function CheckoutContent() {
     </>
   );
 }
-
 
 export default function Checkout() {
   return (

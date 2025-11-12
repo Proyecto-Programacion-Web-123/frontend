@@ -16,7 +16,7 @@ interface Product {
   release_date: string;
 }
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
 
 export default function ProductPage() {
   const params = useParams()

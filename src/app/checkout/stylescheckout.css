@@ -270,4 +270,25 @@ body {
   margin: 40px 0 20px;
 }
 
+.quantity-section {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #F9F91C;
+  border-radius: 8px;
 }
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total-price {
+  font-size: 1.2em;
+  color: #F9F91C;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+}
+}
+
